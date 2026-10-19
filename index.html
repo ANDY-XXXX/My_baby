@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120218">
+  <title>Para ti, mi amor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4d8d'%3E%3Cpath d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsBg" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <!-- Barra superior: volver + progreso -->
+  <header class="topbar">
+    <button class="back" id="backBtn" onclick="prev()" aria-label="Volver"><i data-lucide="chevron-left"></i></button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+  </header>
+
+  <!-- 1: Intro -->
+  <section class="screen active" id="screen1">
+    <div class="content">
+      <div class="hero-icon bounce"><i data-lucide="gift"></i></div>
+      <h1 class="script-title">Hola, mi amor</h1>
+      <p class="subtitle">Tengo un regalito para ti...<br>pero tienes que abrirlo tú.</p>
+      <button class="btn" onclick="next()">Abrirlo <i data-lucide="sparkles"></i></button>
+    </div>
+  </section>
+
+  <!-- 2: Feliz cumpleaños -->
+  <section class="screen" id="screen2">
+    <div class="content">
+      <p class="mini">Hoy es un día muy especial</p>
+      <h1 class="big-title">¡Feliz<br>Cumpleaños!</h1>
+      <p class="name-title">Mi nena linda <i data-lucide="cake-slice" class="inline"></i></p>
+      <p class="subtitle">Que este año esté lleno de todo lo bonito que mereces, y que yo pueda estar ahí para verte sonreír.</p>
+      <button class="btn" onclick="next()">Sigue <i data-lucide="arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- 3: Distancia -->
+  <section class="screen" id="screen3">
+    <div class="content">
+      <div class="icons-row float"><i data-lucide="globe" class="c-sky"></i><i data-lucide="plane" class="c-gold"></i><i data-lucide="mail" class="c-pink"></i></div>
+      <h2 class="section-title">Aunque estemos lejos...</h2>
+      <p class="text">La distancia es solo un número. Lo que siento por ti no entiende de kilómetros, ni de pantallas, ni de esperas.</p>
+      <p class="text">Cada día lejos de ti es un día más cerca de tenerte. Y mientras tanto, mi corazón siempre está donde tú estás.</p>
+      <div class="countdown" id="countdown" hidden>
+        <p class="mini">Faltan para vernos</p>
+        <div class="cd-row">
+          <div><b id="cdD">0</b><span>días</span></div>
+          <div><b id="cdH">0</b><span>horas</span></div>
+          <div><b id="cdM">0</b><span>min</span></div>
+        </div>
+      </div>
+      <button class="btn" onclick="next()">Hay más <i data-lucide="arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- 4: Razones -->
+  <section class="screen" id="screen4">
+    <div class="content">
+      <h2 class="section-title">Razones por las que te amo</h2>
+      <p class="subtitle">Toca cada tarjeta</p>
+      <div class="reasons-grid">
+        <button class="reason-card c1"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="smile"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="smile" class="bk-ico"></i><b>Tu sonrisa</b><span class="bk-line"></span>Que me alegra hasta el peor de los días<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+        <button class="reason-card c2"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="laugh"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="laugh" class="bk-ico"></i><b>Tu risa</b><span class="bk-line"></span>Cómo me haces reír incluso a kilómetros de distancia<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+        <button class="reason-card c3"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="heart-handshake"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="heart-handshake" class="bk-ico"></i><b>Tu cariño</b><span class="bk-line"></span>Tu forma de quererme, tan tuya y tan bonita<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+        <button class="reason-card c4"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="flame"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="flame" class="bk-ico"></i><b>Tu fuerza</b><span class="bk-line"></span>Lo fuerte y valiente que eres<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+        <button class="reason-card c5"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="message-circle"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="message-circle" class="bk-ico"></i><b>Tus mensajes</b><span class="bk-line"></span>Cada mensaje, cada llamada, cada "te quiero"<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+        <button class="reason-card c6"><span class="card-inner"><span class="card-front"><span class="orb"><i data-lucide="heart"></i></span><i data-lucide="sparkles" class="spk"></i></span><span class="card-back"><i data-lucide="heart" class="bk-ico"></i><b>Tú</b><span class="bk-line"></span>Que eres tú. Simplemente tú.<i data-lucide="heart" class="bk-heart"></i></span></span></button>
+      </div>
+      <button class="btn" onclick="next()">Una última cosa <i data-lucide="arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- 5: Carta -->
+  <section class="screen" id="screen5">
+    <div class="content">
+      <h2 class="section-title">Una cartita para ti</h2>
+
+      <div class="letter">
+        <div class="seal"><i data-lucide="heart"></i></div>
+        <p>Mi amor:</p>
+        <p>Hoy cumples un año más, y aunque me hubiera encantado estar ahí para abrazarte fuerte, darte un beso y celebrarte como te mereces, la distancia no va a impedir que te diga lo mucho que te amo.</p>
+        <p>Eres la persona más especial que ha llegado a mi vida. Admiro tu fuerza, tu sonrisa, tu forma de hacerme sentir en casa incluso estando tan lejos. Cada día contigo, aunque sea a través de una pantalla, es un regalo que guardo en el corazón.</p>
+        <p>Gracias por existir, por elegirme, por ser mi persona favorita. Este año que empieza quiero llenarlo de momentos contigo, de risas, de planes y de mucho amor.</p>
+        <p>Feliz cumpleaños, mi vida. Te amo hoy, mañana y siempre.</p>
+        <span class="signature">Con todo mi amor,<br>tu pochocrispis</span>
+      </div>
+
+      <button class="btn" onclick="next()">Y algo más <i data-lucide="arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- 6: Final -->
+  <section class="screen" id="screen6">
+    <div class="content">
+      <div class="hero-icon big beat"><i data-lucide="heart"></i></div>
+      <h1 class="script-title">Te amo infinitamente</h1>
+      <p class="subtitle">Feliz cumpleaños, mi amor</p>
+      <p class="ps">Aunque estemos lejos, mi corazón siempre está contigo. Pronto estaremos juntos.</p>
+      <button class="btn ghost" onclick="restart()"><i data-lucide="rotate-ccw"></i> Volver a ver</button>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
